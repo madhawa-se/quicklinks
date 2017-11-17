@@ -22,7 +22,7 @@
             '                            <div class="title">' +
             '                                <h2>Example</h2>' +
             '                            </div>' +
-            '                            <ul>' +
+            '                            <ul class="box-list">' +
             '                                <li class="box">1</li>' +
             '                                <li class="box">1</li>' +
             '                                <li class="box">1</li>' +
@@ -115,11 +115,111 @@
             '            }' +
             '        </style>';
 
+    var linkTree = {
+        "version": "1",
+        "quicklinks": [
+            {
+                "categories": [
+                    {
+                        "name": "Site building",
+                        "list": [
+                            {
+                                "item name": "Blocks",
+                                "image": "",
+                                "url": ""
+                            },
+                            {
+                                "item name": "Context",
+                                "image": "",
+                                "url": ""
+                            },
+                            {
+                                "item name": "Menus",
+                                "image": "",
+                                "url": ""
+                            },
+                            {
+                                "item name": "Themes",
+                                "image": "",
+                                "url": ""
+                            },
+                            {
+                                "item name": "ImageCache",
+                                "image": "",
+                                "url": ""
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Create content",
+                        "list": [
+                            {
+                                "item name": "Node Block",
+                                "image": "",
+                                "url": ""
+                            },
+                            {
+                                "item name": "None Ediatble Blocks",
+                                "image": "",
+                                "url": ""
+                            },
+                            {
+                                "item name": "Menus",
+                                "image": "",
+                                "url": ""
+                            },
+                            {
+                                "item name": "Themes",
+                                "image": "",
+                                "url": ""
+                            },
+                            {
+                                "item name": "ImageCache",
+                                "image": "",
+                                "url": ""
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Create content",
+                        "list": [
+                            {
+                                "item name": "Blocks",
+                                "image": "",
+                                "url": ""
+                            },
+                            {
+                                "item name": "Context",
+                                "image": "",
+                                "url": ""
+                            },
+                            {
+                                "item name": "Menus",
+                                "image": "",
+                                "url": ""
+                            },
+                            {
+                                "item name": "Themes",
+                                "image": "",
+                                "url": ""
+                            },
+                            {
+                                "item name": "ImageCache",
+                                "image": "",
+                                "url": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    };
 
     $(document).ready(function () {
 
-        $(cssString).appendTo("head");
-        $("body").append(htmlString);
+        //$(cssString).appendTo("head");
+        //$("body").append(htmlString);
+        init();
 
         $(document).keydown(function (e) {
             //e.preventDefault();
@@ -133,6 +233,21 @@
             }
         });
     });
+
+    function init() {
+        buildUi();
+    }
+
+    function buildUi() {
+        var cats = linkTree.quicklinks[0].categories;
+        //alert(cats.length);
+        var panel = $(".main-panel .box-list");
+        for (var i = 0; i < cats.length; i++) {
+            var cat = cats[i];
+            //alert(cat.name);
+            panel.append('<li><div class="panel"><div class="grid"><div class="title"><h2>' + cat.name + '</h2></div><ul></ul></div></div></li>');
+        }
+    }
 
     function swithVisible() {
         var panel = $(".main-panel");
